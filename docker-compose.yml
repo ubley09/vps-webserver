@@ -16,6 +16,7 @@ services:
      - ./../sites/test.ubleys.com/src:/var/www/test.ubleys.com/:ro
      - ./../sites/inventory.ubleys.com/src:/var/www/inventory.ubleys.com/:ro
      - ./../sites/files.ubleys.com/src:/var/www/files.ubleys.com/:ro
+     - ./../sites/gallery.ubleys.com/src:/var/www/gallery.ubleys.com/:ro
 
      - ./ngnix/html:/usr/share/nginx/html/:ro
      - ./certbot/:/etc/nginx/ssl/:ro
@@ -29,4 +30,5 @@ services:
      - ./../sites/test.ubleys.com/src:/var/www/test.ubleys.com/:rw
      - ./../sites/inventory.ubleys.com/src:/var/www/inventory.ubleys.com/:rw
      - ./../sites/files.ubleys.com/src:/var/www/files.ubleys.com/:rw
+     - ./../sites/gallery.ubleys.com/src:/var/www/gallery.ubleys.com/:rw
      - ./certbot/:/etc/letsencrypt/:rw
