@@ -1,2 +1,3 @@
 /certbot/*
 /ngnix/log/*
+!.gitignore
