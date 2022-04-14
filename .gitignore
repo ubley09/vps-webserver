@@ -1,3 +1,4 @@
 /certbot/*
 /ngnix/log/*
+/nodejs/node_modules/*
 !.gitignore

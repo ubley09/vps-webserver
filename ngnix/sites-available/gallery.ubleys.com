@@ -25,8 +25,8 @@ server {
     ssl_certificate /etc/nginx/ssl/live/gallery.ubleys.com/fullchain.pem;
     ssl_certificate_key /etc/nginx/ssl/live/gallery.ubleys.com/privkey.pem;
 
-    root /var/www/gallery.ubleys.com;
-    autoindex on;
+    root /var/www/gallery.ubleys.com/dist/gallery;
+
     location / {
         try_files $uri $uri/ =404;
     }
