@@ -8,8 +8,8 @@ services:
      - "443:443"
     restart: always
     depends_on:
-      node_service:
-        condition: service_started
+     - node_service
+     - php_service
     volumes:
      - ./ngnix/nginx.conf:/etc/nginx/nginx.conf:ro
      - ./ngnix/conf.d/:/etc/nginx/conf.d/:ro
@@ -17,6 +17,7 @@ services:
 
      - ./../sites/ubleys.com/src:/var/www/ubleys.com/:ro
      - ./../sites/test.ubleys.com/src:/var/www/test.ubleys.com/:ro
+     - ./../sites/test-php.ubleys.com/src:/var/www/test-php.ubleys.com/:ro
      - ./../sites/inventory.ubleys.com/src:/var/www/inventory.ubleys.com/:ro
      - ./../sites/files.ubleys.com/src:/var/www/files.ubleys.com/:ro
      - ./../sites/gallery.ubleys.com/:/var/www/gallery.ubleys.com/:ro
@@ -25,6 +26,9 @@ services:
      - ./certbot/:/etc/nginx/ssl/:ro
      
      - ./ngnix/log/:/var/ngnix/log/:rw
+    links:
+     - php_service
+
 
   certbot:
     depends_on:
@@ -34,6 +38,7 @@ services:
     volumes:
      - ./../sites/ubleys.com/src:/var/www/ubleys.com/:rw
      - ./../sites/test.ubleys.com/src:/var/www/test.ubleys.com/:rw
+     - ./../sites/test-php.ubleys.com/src:/var/www/test-php.ubleys.com/:rw
      - ./../sites/inventory.ubleys.com/src:/var/www/inventory.ubleys.com/:rw
      - ./../sites/files.ubleys.com/src:/var/www/files.ubleys.com/:rw
      - ./../sites/gallery.ubleys.com/:/var/www/gallery.ubleys.com/:rw
@@ -48,3 +53,11 @@ services:
     volumes:
       - ./nodejs/:/nodejs
       - ./../sites/:/nodejs/sites
+
+  php_service:
+    image: php:fpm-alpine3.14
+    tty: true
+    volumes:
+     - ./../sites/test.ubleys.com/src:/var/www/test.ubleys.com/:ro
+     - ./../sites/test-php.ubleys.com/src:/var/www/test-php.ubleys.com/:ro
+
