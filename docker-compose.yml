@@ -47,8 +47,8 @@ services:
   node_service:
     image: node:17-alpine
     working_dir: /nodejs
-    command: >
-      /bin/sh -c "cd sites/gallery.ubleys.com && npm run ng build --prod && tail -f /dev/null"
+#    command: >
+#      /bin/sh -c "cd sites/gallery.ubleys.com && npm run ng build --prod && tail -f /dev/null"
     tty: true
     volumes:
       - ./nodejs/:/nodejs
@@ -60,4 +60,4 @@ services:
     volumes:
      - ./../sites/test.ubleys.com/src:/var/www/test.ubleys.com/:ro
      - ./../sites/test-php.ubleys.com/src:/var/www/test-php.ubleys.com/:ro
-
+     - ./../sites/gallery.ubleys.com/:/var/www/gallery.ubleys.com/:ro
