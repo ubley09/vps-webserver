@@ -13,4 +13,3 @@ Important commands:
 `docker exec -it service /bin/sh`
 `ng build --prod` *angular prod build to dest/project_name*
 
-szegszkómít
